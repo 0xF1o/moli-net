@@ -1,0 +1,12 @@
+FROM mcr.microsoft.com/dotnet/sdk:10.0
+RUN --mount=type=cache,target=/var/cache/apt --mount=type=cache,target=/var/lib/apt/lists apt-get update && apt-get install -y --no-install-recommends libfontconfig1
+WORKDIR /work
+COPY src/Moli.Net/Moli.Net.csproj src/Moli.Net/
+COPY tests/Moli.Playwright.Tests/Moli.Playwright.Tests.csproj tests/Moli.Playwright.Tests/
+COPY examples/Moli.Example/Moli.Example.csproj examples/Moli.Example/
+RUN dotnet restore tests/Moli.Playwright.Tests && dotnet restore examples/Moli.Example
+COPY src/Moli.Net/ src/Moli.Net/
+COPY tests/Moli.Playwright.Tests/ tests/Moli.Playwright.Tests/
+COPY examples/Moli.Example/ examples/Moli.Example/
+RUN dotnet build tests/Moli.Playwright.Tests --no-restore && dotnet build examples/Moli.Example --no-restore
+CMD ["sh", "-ec", "dotnet test tests/Moli.Playwright.Tests -f net10.0 --no-build --no-restore --blame-hang-timeout 60s; XDG_DATA_HOME=/tmp/moli-net-standard dotnet test tests/Moli.Playwright.Tests -f net8.0 --no-build --no-restore --blame-hang-timeout 60s; dotnet run --project examples/Moli.Example --no-build --no-restore"]

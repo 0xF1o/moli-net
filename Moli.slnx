@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/examples/">
+    <Project Path="examples/Moli.Example/Moli.Example.csproj" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/Moli.Net/Moli.Net.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Moli.Playwright.Tests/Moli.Playwright.Tests.csproj" />
+  </Folder>
+</Solution>
