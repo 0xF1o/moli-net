@@ -4,7 +4,17 @@
     <LangVersion>12.0</LangVersion>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <Version>0.1.0</Version>
   </PropertyGroup>
+  <Target Name="SetGitVersion" BeforeTargets="PrepareForBuild;GenerateNuspec" Condition="Exists('$(MSBuildThisFileDirectory)../../.git')">
+    <Exec Command="git -c safe.directory=* rev-list --count HEAD" ConsoleToMSBuild="true" IgnoreExitCode="true" StandardOutputImportance="low" StandardErrorImportance="low">
+      <Output TaskParameter="ConsoleOutput" PropertyName="GitCommitCount" />
+    </Exec>
+    <PropertyGroup Condition="$([System.Text.RegularExpressions.Regex]::IsMatch('$(GitCommitCount.Trim())', '^[0-9]+$'))">
+      <Version>0.1.$(GitCommitCount.Trim())</Version>
+      <PackageVersion>$(Version)</PackageVersion>
+    </PropertyGroup>
+  </Target>
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
     <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="10.0.15" />
     <PackageReference Include="SharpZipLib" Version="1.4.2" />
