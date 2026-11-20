@@ -2,7 +2,7 @@
 
 Starts and stops [Moli](https://github.com/lexmount/moli), a headless browser that speaks CDP. Use Playwright, PuppeteerSharp, or any other CDP client.
 
-On first use it downloads the pinned Moli release (currently **1.1.26**), verifies its SHA-256, and caches it. Linux needs glibc and `libfontconfig1`; macOS needs an existing `ExecutablePath`.
+On first use it downloads the pinned Moli release, verifies its SHA-256, and caches it. Linux needs glibc and **libfontconfig1**; macOS needs an existing **ExecutablePath**.
 
 ## Minimal example
 
