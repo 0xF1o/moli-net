@@ -39,13 +39,7 @@ The Playwright, PuppeteerSharp, and Selenium samples fill a textbox and click a 
 
 ## Publishing
 
-Pushing a `v*` tag runs `.github/workflows/publish.yml`, which packs `Moli.Net.0.1.<commit count>` and pushes it with a short-lived key from NuGet trusted publishing:
-
-```sh
-git tag v1 && git push origin v1
-```
-
-The tag text is only a trigger; the package version is the git commit count.
+Pushing to `main` runs `.github/workflows/publish.yml`, which packs `Moli.Net.0.1.<commit count>` and pushes it with a short-lived key from NuGet trusted publishing.
 
 The nuget.org policy uses owner `0xF1o`, repository `moli-net`, workflow file `publish.yml`, package glob `Moli.Net*`, and no environment. The GitHub secret `NUGET_USER` must hold your nuget.org profile name.
 
