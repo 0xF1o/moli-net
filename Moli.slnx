@@ -2,6 +2,8 @@
   <Folder Name="/examples/">
     <Project Path="examples/Moli.Playwright.Sample/Moli.Playwright.Sample.csproj" />
     <Project Path="examples/Moli.PuppeteerSharp.Sample/Moli.PuppeteerSharp.Sample.csproj" />
+    <Project Path="examples/Moli.Pdf.Sample/Moli.Pdf.Sample.csproj" />
+    <Project Path="examples/Moli.Selenium.Sample/Moli.Selenium.Sample.csproj" />
   </Folder>
   <Folder Name="/src/">
     <Project Path="src/Moli.Net/Moli.Net.csproj" />

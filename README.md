@@ -22,14 +22,20 @@ Dispose the client before the server.
 
 With PuppeteerSharp, use `Puppeteer.ConnectAsync(new ConnectOptions { BrowserURL = moli.Endpoint.AbsoluteUri, DefaultViewport = null })` instead.
 
+Selenium connects natively to Moli's WebDriver Classic endpoint with `browserName = "moli"`; see `examples/Moli.Selenium.Sample`.
+
+Moli also prints rendered HTML views to PDF (`Page.PdfAsync`); see `examples/Moli.Pdf.Sample`.
+
 ## Runnable samples
 
 ```sh
 dotnet run --project examples/Moli.Playwright.Sample
 dotnet run --project examples/Moli.PuppeteerSharp.Sample
+dotnet run --project examples/Moli.Selenium.Sample
+dotnet run --project examples/Moli.Pdf.Sample
 ```
 
-Both fill a textbox and click a button offline, printing `Hello, Karl!`. No `playwright install` or Chrome download needed.
+The Playwright, PuppeteerSharp, and Selenium samples fill a textbox and click a button offline, printing `Hello, Karl!`. The PDF sample serves an ASP.NET Core page on `http://127.0.0.1:5187`, captures the rendered HTML in middleware, and returns it as a PDF. No `playwright install` or Chrome download needed.
 
 ## Options
 

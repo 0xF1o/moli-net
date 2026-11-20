@@ -5,10 +5,14 @@ COPY src/Moli.Net/Moli.Net.csproj src/Moli.Net/
 COPY tests/Moli.Playwright.Tests/Moli.Playwright.Tests.csproj tests/Moli.Playwright.Tests/
 COPY examples/Moli.Playwright.Sample/Moli.Playwright.Sample.csproj examples/Moli.Playwright.Sample/
 COPY examples/Moli.PuppeteerSharp.Sample/Moli.PuppeteerSharp.Sample.csproj examples/Moli.PuppeteerSharp.Sample/
-RUN dotnet restore tests/Moli.Playwright.Tests && dotnet restore examples/Moli.Playwright.Sample && dotnet restore examples/Moli.PuppeteerSharp.Sample
+COPY examples/Moli.Pdf.Sample/Moli.Pdf.Sample.csproj examples/Moli.Pdf.Sample/
+COPY examples/Moli.Selenium.Sample/Moli.Selenium.Sample.csproj examples/Moli.Selenium.Sample/
+RUN dotnet restore tests/Moli.Playwright.Tests && dotnet restore examples/Moli.Playwright.Sample && dotnet restore examples/Moli.PuppeteerSharp.Sample && dotnet restore examples/Moli.Pdf.Sample && dotnet restore examples/Moli.Selenium.Sample
 COPY src/Moli.Net/ src/Moli.Net/
 COPY tests/Moli.Playwright.Tests/ tests/Moli.Playwright.Tests/
 COPY examples/Moli.Playwright.Sample/ examples/Moli.Playwright.Sample/
 COPY examples/Moli.PuppeteerSharp.Sample/ examples/Moli.PuppeteerSharp.Sample/
-RUN dotnet build tests/Moli.Playwright.Tests --no-restore && dotnet build examples/Moli.Playwright.Sample --no-restore && dotnet build examples/Moli.PuppeteerSharp.Sample --no-restore
-CMD ["sh", "-ec", "dotnet test tests/Moli.Playwright.Tests -f net10.0 --no-build --no-restore --blame-hang-timeout 60s; XDG_DATA_HOME=/tmp/moli-net-standard dotnet test tests/Moli.Playwright.Tests -f net8.0 --no-build --no-restore --blame-hang-timeout 60s; dotnet run --project examples/Moli.Playwright.Sample --no-build --no-restore; dotnet run --project examples/Moli.PuppeteerSharp.Sample --no-build --no-restore"]
+COPY examples/Moli.Pdf.Sample/ examples/Moli.Pdf.Sample/
+COPY examples/Moli.Selenium.Sample/ examples/Moli.Selenium.Sample/
+RUN dotnet build tests/Moli.Playwright.Tests --no-restore && dotnet build examples/Moli.Playwright.Sample --no-restore && dotnet build examples/Moli.PuppeteerSharp.Sample --no-restore && dotnet build examples/Moli.Pdf.Sample --no-restore && dotnet build examples/Moli.Selenium.Sample --no-restore
+CMD ["sh", "-ec", "dotnet test tests/Moli.Playwright.Tests -f net10.0 --no-build --no-restore --blame-hang-timeout 60s; XDG_DATA_HOME=/tmp/moli-net-standard dotnet test tests/Moli.Playwright.Tests -f net8.0 --no-build --no-restore --blame-hang-timeout 60s; dotnet run --project examples/Moli.Playwright.Sample --no-build --no-restore; dotnet run --project examples/Moli.PuppeteerSharp.Sample --no-build --no-restore; dotnet run --project examples/Moli.Selenium.Sample --no-build --no-restore"]
