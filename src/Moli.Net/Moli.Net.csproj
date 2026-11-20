@@ -5,7 +5,13 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <Version>0.1.0</Version>
+    <Description>Downloads, starts, and stops Moli, a headless browser that speaks CDP.</Description>
+    <RepositoryUrl>https://github.com/0xF1o/moli-net</RepositoryUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
+  <ItemGroup>
+    <None Include="../../README.md" Pack="true" PackagePath="/" />
+  </ItemGroup>
   <Target Name="SetGitVersion" BeforeTargets="PrepareForBuild;GenerateNuspec" Condition="Exists('$(MSBuildThisFileDirectory)../../.git')">
     <Exec Command="git -c safe.directory=* rev-list --count HEAD" ConsoleToMSBuild="true" IgnoreExitCode="true" StandardOutputImportance="low" StandardErrorImportance="low">
       <Output TaskParameter="ConsoleOutput" PropertyName="GitCommitCount" />
