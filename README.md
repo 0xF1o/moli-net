@@ -18,13 +18,6 @@ await page.GotoAsync("https://example.com");
 Console.WriteLine(await page.Locator("body").InnerTextAsync());
 ```
 
-## Runnable samples
+## Samples
 
-```sh
-dotnet run --project examples/Moli.Playwright.Sample
-dotnet run --project examples/Moli.PuppeteerSharp.Sample
-dotnet run --project examples/Moli.Selenium.Sample
-dotnet run --project examples/Moli.Pdf.Sample
-```
-
-The Playwright, PuppeteerSharp, and Selenium samples fill a textbox and click a button offline, printing `Hello, Karl!`. The PDF sample serves an ASP.NET Core page on `http://127.0.0.1:5187`, captures the rendered HTML in middleware, and returns it as a PDF. No `playwright install` or Chrome download needed.
+See [examples/README.md](examples/README.md) for runnable samples.
